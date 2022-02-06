@@ -1,6 +1,8 @@
 from tensorflow.keras.models import load_model
 import tensorflow as tf
 import cv2
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 
 import imutils
@@ -62,7 +64,7 @@ def process_image(img):
 
 def run_model(img_in):
     # Load trained NN
-    model = load_model("D:\\AutoNotes\\text_translator\\handwriting.model")
+    model = load_model("/home/bdutton12/apps/autonotes/AutoNotes/text_translator/handwriting.model")
 
     # Load img of handwriting
     img = cv2.imread(img_in)
