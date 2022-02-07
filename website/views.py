@@ -19,13 +19,19 @@ import numpy as np
 # Create your views here.
 from django.http import HttpResponse
 
-# Homepage
+# Homepage if signed out
+def home(request):
+    return render(request, 'homepage.html')
+
+# Homepage if signed in
 def index(request):
     username = "anon"
     post_list = []
+    not_signed = True
     # If user is logged in
     if request.user.is_authenticated:
         username = request.user.username
+        not_signed = False
 
         # Get list of users with corresponding username (should only be one but django insists list)
         user = list(Person.objects.filter(username=username))
@@ -40,14 +46,16 @@ def index(request):
             post_tup = (post.text, img.url)
             post_list.append(post_tup)
 
-    # Objects to pass to index.html
-    context = {
-        "welcome_msg": "Hello {}!".format(username),
-        "posts": post_list
-    }
+        # Objects to pass to index.html
+        context = {
+            "welcome_msg": "Hello {}!".format(username),
+            "posts": post_list
+        }
 
-    # Render index with data
-    return render(request, 'index.html', context=context)
+        # Render index with data
+        return render(request, 'index.html', context=context)
+    else:
+        return redirect('home')
 
 def register_request(request):
     # Initialize content for thank you email

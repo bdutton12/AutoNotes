@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+
+{% block content %}      
+
+{% load crispy_forms_tags %}
+
+<div style="text-align:center; padding-left: 20%; padding-right: 20%;">
+    <h1 style="color: #1D3558;">Welcome to AutoNotes</h1>
+    <p style="color: #1D3558;">This project uses a neural network that was built with Tensorflow, along with some OpenCV pre-processing to do its
+        best to read your handwriting. Currently the neural network's accuracy isn't the greatest (turns out handwriting is
+        one of the leading issues in ML) but it's definitely fun to play with! For best results, ensure your images are on a plain white
+        background with even lighting.
+    </p>
+    <div style="text-align: center; padding-top: 50%;">
+        <p style="color: #1D3558;">This website was created by Brandon Dutton. You can contact me below.</p>
+        <p>
+        <a href="mailto: bdutton12@outlook.com">Email</a>
+        <a href="https://www.linkedin.com/in/brandon-dutton-498773221/">LinkedIn</a>
+        <a href="https://github.com/bdutton12/AutoNotes">GitHub</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}
