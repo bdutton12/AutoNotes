@@ -30,7 +30,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bdutton12.opalstacked.com', 'www.bdutton12.opalstacked.com']
+ALLOWED_HOSTS = ['bdutton12.opalstacked.com', 'www.bdutton12.opalstacked.com', '127.0.0.1']
 
 
 # Application definition
@@ -87,10 +87,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'autonotes',
-        'USER': 'postgre',
-        'PASSWORD': 'Commandoblock1!',
+        'USER': 'postgres',
+        'PASSWORD': env('DB_PASS'),
         'HOST': '',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 

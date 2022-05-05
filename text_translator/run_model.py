@@ -1,9 +1,13 @@
-from tensorflow.keras.models import load_model
 import tensorflow as tf
+from tensorflow.keras.models import load_model
 import cv2
 import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 import imutils
 from imutils.contours import sort_contours
@@ -64,7 +68,7 @@ def process_image(img):
 
 def run_model(img_in):
     # Load trained NN
-    model = load_model("/home/bdutton12/apps/autonotes/AutoNotes/text_translator/handwriting.model")
+    model = load_model(env('MODEL_DIR'))
 
     # Load img of handwriting
     img = cv2.imread(img_in)
@@ -108,5 +112,6 @@ def run_model(img_in):
     plt.figure(figsize=(15,10))
     plt.imshow(img)
     """
-    
+    if len(notesText) > 100:
+        notesText = notesText[:100]
     return notesText

@@ -13,7 +13,7 @@
  <body style="background-color: #B0C6E7;">
    
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D3558;">
-    <a class="navbar-brand" href="/index">
+    <a class="navbar-brand" href="/home">
       <img src="https://i.imgur.com/pH7Zu3W.png" alt="" width="60" height="60">
     </a>
     <div class="collapse navbar-collapse" id="navbarText">
@@ -35,6 +35,10 @@
         <li>
           <a class="nav-link" href="/upload" style="color: #B0C6E7;">Upload</a>
         </li>
+
+        <li>
+          <a class="nav-link" href="/posts" style="color: #B0C6E7;">Posts</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -48,12 +52,14 @@
   {% endif %}
 
   {% if posts %}
+    <div style="margin-top: 30px">
     {% for post in posts %}
-      <img src="{{ MEDIA_URL }}{{ post.1 }}" width="200" height="200" >
-      <p style=" word-wrap: break-word;"> {{ post.0 }}  </p>
+      <img src="{{ MEDIA_URL }}{{ post.1 }}" width="200" height="200" style="display: block; margin-left: auto; margin-right: auto;">
+      <p style="word-wrap: break-word; text-align: center; margin-left: 35%; margin-right: 35%; margin-top: 10px"> {{ post.0 }}  </p>
       <br>
       <br>
     {% endfor %}
+    </div>
   {% endif %}
 
   {% block content %}
